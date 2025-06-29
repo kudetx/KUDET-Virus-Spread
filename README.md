@@ -13,6 +13,13 @@ The aim of the project is to demonstrate and simulate pedestrian behavior and in
 System Definition
 In this study, the developed simulation system represents an abstract digital model of an airport terminal.
 The modeling does not aim to replicate the exact architecture of a real airport; rather, it focuses on logically representing functional elements such as passenger flow, service points, and epidemic spread. The main objective is to analyze the dynamics of a complex environment by constructing meaningful abstractions to observe human behavior and interactions within the system.
+<img width="454" alt="image" src="https://github.com/user-attachments/assets/7cb699b9-9ce0-4243-824a-a8ecd632bc5f" />
+
+<img width="320" alt="image" src="https://github.com/user-attachments/assets/3e580a2e-a420-43e4-b7f1-ecdb635af863" />
+
+<img width="481" alt="image" src="https://github.com/user-attachments/assets/32399175-6601-4ce7-bff6-0f73cd28ee8d" />
+
+<img width="501" alt="image" src="https://github.com/user-attachments/assets/b97f50d9-9cee-4e5c-887d-236c46b32553" />
 
 System Components
 The model consists of three main components:
@@ -178,7 +185,7 @@ A boolean variable indicating whether an individual is considered at risk due to
 
 
 
-System Behavior / How It Works
+***System Behavior / How It Works***
 The simulation begins at the terminal’s entry point using the pedSource block. This block introduces passengers into the system by generating 100 pedestrian agents per hour along a line defined by EntryLine.
 -Each newly created Pedestrian agent is individualized with randomly assigned comfort speed, initial speed, and radius (size).
 -Additionally, there is a 10% probability that the agent will be marked as infected and added to the pedInfected collection.
@@ -186,6 +193,7 @@ The simulation begins at the terminal’s entry point using the pedSource block.
 
 In the simulation, passengers follow the steps below as they move through the terminal:
 
+<img width="454" alt="image" src="https://github.com/user-attachments/assets/f975eae0-7ac1-4e8c-b2c3-3cd455453223" />
  
 Contact and Spread Mechanism: Infected individuals are modeled with social connections to surrounding agents using the connections list. The event block, which runs every minute, spreads the infection risk through these connections. The code below demonstrates this mechanism:
  
@@ -209,7 +217,30 @@ Throughout the simulation, the TimePlot graph displays time-dependent curves of 
 - "Infected People"
 This structure allows the simulation to observe both micro-level agent behaviors and macro-level infection spread trends.
 System behaviors are modeled through time-sensitive events and interactions between individuals, and are visualized in detail.
-
+<img width="320" alt="image" src="https://github.com/user-attachments/assets/52cadae7-0e5f-4e83-a35a-ca91934c5e01" />
+<img width="293" alt="image" src="https://github.com/user-attachments/assets/a2ffe556-b01c-451d-96ed-8f13f81846e0" />
+***System Model***
+This section defines all the structural and visual components used within the simulation environment. The model includes various objects and links designed for agent guidance, interaction with physical elements, and visual representation.
+Source and Sink Blocks
+-pedSource: The entry point for pedestrian agents into the simulation. Operates along a defined EntryLine. Each agent’s initial speed, diameter, and infection probability are specified here. A random assignment (randomTrue()) determines whether an agent is infected at entry.
+-pedSink: The endpoint where agents exit the system. If an agent is infected, it is removed from the pedInfectedcollection upon exiting.
+ Movement and Service Modules
+-pedGoTo, pedGoToWC, pedGoToRest: Modules that direct agents to general goals, toilets, or rest areas.
+-pedServiceCheckin, pedServiceSecurity, pedService, pedService1, pedService2: Represent service points such as check-in counters, security control, and restaurants. Agents receive service for a defined duration.
+-pedWait, pedWait1: Passive waiting modules where agents can sit or wait. These are cleared after each flight using freeAll().
+Routing Blocks
+-selectOutput, selectOutput1: Decision nodes that randomly route agents into alternative paths, creating variety in the flow pattern.
+ Agent Visual Representation
+-person, person_sitting: Two graphical states of the agent (standing or seated), activated depending on the isSitting attribute.
+oval, oval1, oval2: Circular shapes that change based on health status:
+o	oval → Healthy
+o	oval1 → At risk
+o	oval2 → Infected
+Environmental and Fixed Objects
+-wall1 – wall12: Structural barriers that define physical boundaries within the simulation. Agent movement is constrained by these.
+-table: Represents desks or tables in service areas.
+-image: Background image depicting the layout of the terminal.
+-xrayScanner, detector, officeWorker, policeman: Static environmental elements placed to enhance realism and functional detailing.
 **Analysis of Input**
 In this simulation, the input parameters are configured to define pedestrian density and the initial conditions for infection transmission. The following elements are synchronized with the pedSource block:
 Total Number of Entries:
@@ -225,23 +256,32 @@ Each pedestrian agent generated via pedSource is initialized with core attribute
 
 **Analysis of Output**
 During the simulation, the output data enables observation of how infection dynamics and pedestrian behaviors evolve over time. These outputs are presented to the user through both graphical and textual means:
+
 TimePlot Chart:
 The number of infected individuals (isInfected), at-risk individuals (isAtRisk), and healthy individuals is plotted in real time along a temporal axis. This chart provides users with the ability to track the progression of contagion trends throughout the simulation.
-Updating Graph Data:
+
+Graph Data:
 The event block is triggered every simulated minute to update the graph. Newly infected individuals are added to the pedInfected list, and at-risk agents are identified through their connections. These results are dynamically reflected in the graphical output.
+
+<img width="454" alt="image" src="https://github.com/user-attachments/assets/69df4744-0360-4a43-94aa-5cbbcc318555" />
+
+<img width="468" alt="image" src="https://github.com/user-attachments/assets/d2c20fcd-4035-4ce5-9882-5a48102059c3" />
+
+<img width="454" alt="image" src="https://github.com/user-attachments/assets/d79b8e6a-4277-445b-953d-df0355dd3bd4" />
+
+<img width="454" alt="image" src="https://github.com/user-attachments/assets/1a87d672-b2b3-4d68-a2e5-419c7e56ca02" />
+
+<img width="454" alt="image" src="https://github.com/user-attachments/assets/be80d099-5782-4c22-98fb-fc8f1122c7f7" />
  
- 
- 
- 
- 
- 
+<img width="454" alt="image" src="https://github.com/user-attachments/assets/bdc3b820-b792-4a92-9ceb-d904a189cc9f" />
  
 Comments: In areas with high queue density, such as waiting zones, restaurants, and restrooms, infection statuses were monitored, and it was observed that the spread was higher in specific locations. For example, in queuing areas, the spread of infection increases as the queue gets longer. In restaurant and restroom areas, infection spread was observed to be minimal due to the presence of partition walls and the lack of long queues. In seated waiting areas, no transmission was observed since social distancing was maintained. However, in standing waiting areas, the rate of spread was very high due to the lack of adherence to social distancing. Finally, at the pedSink exit point, infection rates were very high, and transmission occurred during queueing for exit.
-9 Validation and Verification
+
+***Validation and Verification***
 -The system successfully demonstrated the expected infection spread; the number of at-risk individuals consistently exceeded the number of infected individuals.
 -The graphs were updated in real-time and remained consistent with the simulation scenario.
 
-Project Results (Your Comments)
+***Project Results***
 This study has demonstrated that an agent-based modeling approach can effectively simulate both behavioral and epidemiological dynamics in an airport environment. By integrating individual pedestrian behaviors with infection transmission logic, the simulation created a realistic and observable model of crowd flow and disease spread.
 The infection propagation mechanism—based on contact between agents—was clearly visualized through both graphical outputs (TimePlot) and text-based tracking, making it possible to monitor the evolution of infection and exposure levels in real time.
 Simulation results revealed several important patterns:
