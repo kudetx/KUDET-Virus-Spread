@@ -14,7 +14,7 @@ System Definition
 In this study, the developed simulation system represents an abstract digital model of an airport terminal.
 The modeling does not aim to replicate the exact architecture of a real airport; rather, it focuses on logically representing functional elements such as passenger flow, service points, and epidemic spread. The main objective is to analyze the dynamics of a complex environment by constructing meaningful abstractions to observe human behavior and interactions within the system.
 
-<img width="454" alt="image" src="https://github.com/user-attachments/assets/6ff17b7b-aff8-4a0d-b3c5-370bc5dc2111" 
+<img width="454" alt="image" src="https://github.com/user-attachments/assets/51eb8b85-177b-42f7-8126-908d58491008" />
 
 <img width="481" alt="image" src="https://github.com/user-attachments/assets/9e04c66b-a9e4-482f-890d-001c006d04cb" />
 
