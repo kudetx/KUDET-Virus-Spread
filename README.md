@@ -13,6 +13,7 @@ The aim of the project is to demonstrate and simulate pedestrian behavior and in
 System Definition
 In this study, the developed simulation system represents an abstract digital model of an airport terminal.
 The modeling does not aim to replicate the exact architecture of a real airport; rather, it focuses on logically representing functional elements such as passenger flow, service points, and epidemic spread. The main objective is to analyze the dynamics of a complex environment by constructing meaningful abstractions to observe human behavior and interactions within the system.
+
 <img width="454" alt="image" src="https://github.com/user-attachments/assets/7cb699b9-9ce0-4243-824a-a8ecd632bc5f" />
 
 <img width="320" alt="image" src="https://github.com/user-attachments/assets/3e580a2e-a420-43e4-b7f1-ecdb635af863" />
